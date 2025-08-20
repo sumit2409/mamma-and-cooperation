@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mamma and Cooperation | Molecular Dynamics Consulting</title>
+  <meta name="description" content="Mamma and Cooperation helps labs and startups run, scale, and interpret molecular dynamics simulations (GROMACS, NAMD, LAMMPS, AMBER) on HPC and cloud." />
+  <meta name="keywords" content="molecular dynamics, MD, GROMACS, NAMD, LAMMPS, AMBER, HPC, GPU, cloud, simulation, consulting" />
+  <meta name="robots" content="index,follow" />
+  <meta name="color-scheme" content="light dark" />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Mamma and Cooperation | Molecular Dynamics Consulting" />
+  <meta property="og:description" content="We help you run, scale, and interpret MD simulations on HPC and cloud." />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="twitter:card" content="summary_large_image" />
+
+  <!-- Tailwind CSS via CDN for simplicity -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config (optional font sizing tweaks)
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", "Helvetica Neue", "Arial", "sans-serif"],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    /* Smooth scroll */
+    html { scroll-behavior: smooth; }
+  </style>
+  <script defer>
+    // Mobile nav toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      btn?.addEventListener('click', () => {
+        menu?.classList.toggle('hidden');
+      });
+
+      // Simple mailto fallback if not deploying with Netlify/Formspree
+      const form = document.getElementById('contact-form');
+      form?.addEventListener('submit', (e) => {
+        if (form.getAttribute('data-mailto-fallback') === 'true') {
+          e.preventDefault();
+          const name = encodeURIComponent(document.getElementById('name').value);
+          const email = encodeURIComponent(document.getElementById('email').value);
+          const company = encodeURIComponent(document.getElementById('company').value);
+          const details = encodeURIComponent(document.getElementById('details').value);
+          const topics = Array.from(document.querySelectorAll('input[name="topics"]:checked')).map(i => i.value).join(', ');
+          const subject = `Inquiry from ${name} at ${company}`;
+          const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0ACompany: ${company}%0D%0AInterested in: ${topics}%0D%0A%0D%0ADetails:%0D%0A${details}`;
+          window.location.href = `mailto:hello@mammacooperation.example?subject=${encodeURIComponent(subject)}&body=${body}`;
+        }
+      });
+    });
+  </script>
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Mamma and Cooperation",
+    "url": "https://www.mammacooperation.example",
+    "logo": "https://www.mammacooperation.example/logo.png",
+    "sameAs": []
+  }
+  </script>
+</head>
+<body class="font-sans antialiased text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-950">
+  <!-- Top Banner (optional note) -->
+  <div class="text-center text-sm bg-gradient-to-r from-indigo-500 via-sky-500 to-cyan-500 text-white py-2">
+    ⚛️ Mamma and Cooperation — Molecular Dynamics experts for HPC & Cloud
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/90 dark:bg-slate-950/80 border-b border-slate-200/60 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#top" class="flex items-center gap-2">
+          <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-indigo-600 text-white font-bold">M</span>
+          <span class="font-semibold tracking-tight">Mamma and Cooperation</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="#services" class="hover:text-indigo-600">Services</a>
+          <a href="#process" class="hover:text-indigo-600">Process</a>
+          <a href="#cases" class="hover:text-indigo-600">Case studies</a>
+          <a href="#stack" class="hover:text-indigo-600">Tech stack</a>
+          <a href="#contact" class="hover:text-indigo-600">Contact</a>
+          <a href="#contact" class="inline-flex items-center rounded-xl bg-indigo-600 text-white px-4 py-2 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400">Book a consult</a>
+        </nav>
+        <button id="mobile-menu-button" class="md:hidden inline-flex items-center justify-center p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+      <div id="mobile-menu" class="md:hidden hidden pb-4">
+        <div class="flex flex-col gap-2">
+          <a href="#services" class="py-2">Services</a>
+          <a href="#process" class="py-2">Process</a>
+          <a href="#cases" class="py-2">Case studies</a>
+          <a href="#stack" class="py-2">Tech stack</a>
+          <a href="#contact" class="py-2">Contact</a>
+          <a href="#contact" class="inline-flex items-center justify-center rounded-xl bg-indigo-600 text-white px-4 py-2 mt-2">Book a consult</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-950"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-4xl/tight sm:text-5xl/tight font-extrabold tracking-tight">
+            Accelerate your <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500">molecular dynamics</span> research
+          </h1>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300 max-w-prose">
+            We design, deploy, and optimize end‑to‑end MD workflows—covering setup, parameterization, scheduling, GPU tuning, and analysis—on HPC clusters and all major clouds.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contact" class="inline-flex items-center rounded-xl bg-indigo-600 text-white px-5 py-3 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400">Start a project</a>
+            <a href="#services" class="inline-flex items-center rounded-xl ring-1 ring-slate-300 dark:ring-slate-700 px-5 py-3 hover:bg-slate-50 dark:hover:bg-slate-800">See services</a>
+          </div>
+          <div class="mt-6 text-sm text-slate-500 dark:text-slate-400">
+            Engines: GROMACS • NAMD • LAMMPS • AMBER • OpenMM &nbsp; | &nbsp; Schedulers: SLURM • PBS • LSF
+          </div>
+        </div>
+        <div>
+          <div class="relative rounded-2xl shadow-xl ring-1 ring-slate-200 dark:ring-slate-800 overflow-hidden">
+            <svg viewBox="0 0 600 360" role="img" aria-label="Stylized molecular system and GPU timelines" class="w-full h-auto">
+              <defs>
+                <linearGradient id="g" x1="0" x2="1"><stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient>
+              </defs>
+              <rect x="0" y="0" width="600" height="360" fill="url(#g)" opacity="0.08"/>
+              <!-- Molecule dots -->
+              <g fill="#6366f1" opacity="0.9">
+                <circle cx="120" cy="80" r="6"/><circle cx="160" cy="110" r="4"/><circle cx="180" cy="70" r="5"/>
+                <circle cx="110" cy="140" r="4"/><circle cx="150" cy="160" r="5"/><circle cx="200" cy="140" r="4"/>
+                <circle cx="250" cy="90" r="6"/><circle cx="280" cy="120" r="4"/><circle cx="300" cy="80" r="5"/>
+              </g>
+              <!-- Bonds -->
+              <g stroke="#0ea5e9" stroke-width="2" opacity="0.8">
+                <line x1="120" y1="80" x2="160" y2="110"/>
+                <line x1="160" y1="110" x2="180" y2="70"/>
+                <line x1="110" y1="140" x2="150" y2="160"/>
+                <line x1="150" y1="160" x2="200" y2="140"/>
+                <line x1="250" y1="90" x2="280" y2="120"/>
+                <line x1="280" y1="120" x2="300" y2="80"/>
+              </g>
+              <!-- Timeline bars -->
+              <g>
+                <rect x="60" y="230" width="480" height="12" rx="6" fill="#e2e8f0"/>
+                <rect x="60" y="260" width="480" height="12" rx="6" fill="#e2e8f0"/>
+                <rect x="60" y="290" width="480" height="12" rx="6" fill="#e2e8f0"/>
+                <rect x="60" y="230" width="220" height="12" rx="6" fill="#6366f1"/>
+                <rect x="60" y="260" width="300" height="12" rx="6" fill="#0ea5e9"/>
+                <rect x="60" y="290" width="380" height="12" rx="6" fill="#14b8a6"/>
+              </g>
+            </svg>
+          </div>
+          <p class="sr-only">Illustration showing a molecule graph and GPU timelines.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-20 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold tracking-tight">Services</h2>
+      <p class="mt-2 text-slate-600 dark:text-slate-300 max-w-prose">Choose a targeted engagement or full end‑to‑end delivery.</p>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Card template functionally repeated -->
+        <article class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-6">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white">1</span>
+            <h3 class="font-semibold">Workflow design & automation</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Reproducible pipelines, containerization (Docker/Singularity), CI for parameter sweeps.</p>
+        </article>
+        <article class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-6">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white">2</span>
+            <h3 class="font-semibold">GPU‑accelerated setup</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">GROMACS, NAMD, LAMMPS, AMBER—compiled and tuned for NVIDIA/AMD GPUs.</p>
+        </article>
+        <article class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-6">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white">3</span>
+            <h3 class="font-semibold">HPC & cloud deployment</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">SLURM/PBS/LSF, autoscaling on AWS/GCP/Azure, spot‑instance strategies.</p>
+        </article>
+        <article class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-6">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white">4</span>
+            <h3 class="font-semibold">Parameterization & force fields</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Ligand parameterization, water models, PME/constraints, equilibration strategies.</p>
+        </article>
+        <article class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-6">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white">5</span>
+            <h3 class="font-semibold">Analysis & visualization</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">RMSD/RMSF, hydrogen bonds, free energy (FEP/TI/umbrella), VMD/PyMOL plots.</p>
+        </article>
+        <article class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-6">
+          <div class="flex items-center gap-3">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white">6</span>
+            <h3 class="font-semibold">Training & upskilling</h3>
+          </div>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Live workshops, best practices, and written SOPs tailored to your stack.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold tracking-tight">How we work</h2>
+      <ol class="mt-8 grid md:grid-cols-4 gap-6">
+        <li class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-6">
+          <h3 class="font-semibold">1) Discovery</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Scope goals, constraints, target engines, and resources.</p>
+        </li>
+        <li class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-6">
+          <h3 class="font-semibold">2) Design</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Architecture, data flow, containerization, and job orchestration.</p>
+        </li>
+        <li class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-6">
+          <h3 class="font-semibold">3) Build & validate</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Implement, benchmark, and verify physical correctness.</p>
+        </li>
+        <li class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-6">
+          <h3 class="font-semibold">4) Handoff & training</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Docs, SOPs, and team workshops; optional ongoing support.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Case Studies / Example engagements -->
+  <section id="cases" class="py-20 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold tracking-tight">Example engagements</h2>
+      <p class="mt-2 text-slate-600 dark:text-slate-300 max-w-prose">Illustrative projects we can deliver—tailored to your science and infrastructure.</p>
+      <div class="mt-10 grid md:grid-cols-3 gap-6">
+        <article class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-6">
+          <h3 class="font-semibold">GPU‑tuned GROMACS on SLURM</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Containerized setup with MPS, PME offload, and checkpoint‑aware array jobs for long runs.</p>
+        </article>
+        <article class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-6">
+          <h3 class="font-semibold">Cloud burst for parameter sweeps</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Autoscaling on AWS/GCP with cost caps; automated post‑processing and result dashboards.</p>
+        </article>
+        <article class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-6">
+          <h3 class="font-semibold">Binding free‑energy pipeline</h3>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">End‑to‑end workflow for FEP/TI with convergence checks and uncertainty estimates.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section id="stack" class="py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold tracking-tight">Tech stack</h2>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-6">
+          <h3 class="font-semibold">Engines & tools</h3>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">GROMACS, NAMD, LAMMPS, AMBER, OpenMM, CHARMM‑GUI, MDTraj, PLUMED, VMD, PyMOL.</p>
+        </div>
+        <div class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-6">
+          <h3 class="font-semibold">Infra & orchestration</h3>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">SLURM, PBS, LSF, Docker, Singularity/Apptainer, Nextflow, Snakemake, CWL.</p>
+        </div>
+        <div class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-6">
+          <h3 class="font-semibold">Cloud providers</h3>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">AWS, GCP, Azure—GPU instances, spot/preemptible strategies, persistent storage.</p>
+        </div>
+        <div class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 p-6">
+          <h3 class="font-semibold">Languages</h3>
+          <p class="mt-3 text-sm text-slate-600 dark:text-slate-300">Python, Bash, C/C++, CUDA basics for profiling and tuning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 bg-slate-50 dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white dark:bg-slate-950 p-8">
+        <h2 class="text-3xl font-bold tracking-tight">Contact</h2>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">Tell us about your system, goals, and timeline. We'll reply with options within 1–2 business days.</p>
+
+        <!-- Netlify/Formspree-ready form. Replace action with your endpoint. -->
+        <form id="contact-form" name="contact" method="POST" class="mt-8 grid gap-6"
+              data-netlify="true" netlify-honeypot="bot-field"
+              action="" data-mailto-fallback="true">
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden">
+            <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-medium">Name</label>
+              <input id="name" name="name" required autocomplete="name" class="mt-2 w-full rounded-xl ring-1 ring-slate-300 dark:ring-slate-700 bg-white dark:bg-slate-950 px-4 py-3" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email" class="mt-2 w-full rounded-xl ring-1 ring-slate-300 dark:ring-slate-700 bg-white dark:bg-slate-950 px-4 py-3" />
+            </div>
+          </div>
+
+          <div>
+            <label for="company" class="block text-sm font-medium">Company / Lab</label>
+            <input id="company" name="company" class="mt-2 w-full rounded-xl ring-1 ring-slate-300 dark:ring-slate-700 bg-white dark:bg-slate-950 px-4 py-3" />
+          </div>
+
+          <fieldset>
+            <legend class="block text-sm font-medium">I’m interested in</legend>
+            <div class="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
+              <label class="inline-flex items-center gap-2"><input type="checkbox" name="topics" value="Workflow design" class="rounded"> Workflow design</label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" name="topics" value="GPU setup" class="rounded"> GPU setup</label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" name="topics" value="HPC/Cloud" class="rounded"> HPC/Cloud</label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" name="topics" value="Parameterization" class="rounded"> Parameterization</label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" name="topics" value="Analysis" class="rounded"> Analysis</label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox" name="topics" value="Training" class="rounded"> Training</label>
+            </div>
+          </fieldset>
+
+          <div>
+            <label for="details" class="block text-sm font-medium">Project details</label>
+            <textarea id="details" name="details" rows="6" placeholder="System type (protein, membrane, ligand, solvent), target engine, resources (GPUs/cluster/cloud), desired outputs..." class="mt-2 w-full rounded-xl ring-1 ring-slate-300 dark:ring-slate-700 bg-white dark:bg-slate-950 px-4 py-3"></textarea>
+          </div>
+
+          <div class="flex items-center justify-between gap-4">
+            <button type="submit" class="inline-flex items-center rounded-xl bg-indigo-600 text-white px-5 py-3 hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400">Send</button>
+            <p class="text-xs text-slate-500 dark:text-slate-400">By sending, you agree to our <a href="#" class="underline">Privacy Policy</a>.</p>
+          </div>
+        </form>
+
+        <p class="mt-6 text-sm text-slate-600 dark:text-slate-300">Prefer email? <a class="text-indigo-600 underline" href="mailto:hello@mammacooperation.example">hello@mammacooperation.example</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <div class="font-semibold">Mamma and Cooperation</div>
+          <div class="text-sm text-slate-500 dark:text-slate-400">Molecular Dynamics Consulting</div>
+        </div>
+        <nav class="text-sm flex flex-wrap gap-4 text-slate-600 dark:text-slate-300">
+          <a href="#services" class="hover:text-indigo-600">Services</a>
+          <a href="#process" class="hover:text-indigo-600">Process</a>
+          <a href="#cases" class="hover:text-indigo-600">Case studies</a>
+          <a href="#stack" class="hover:text-indigo-600">Tech stack</a>
+          <a href="#contact" class="hover:text-indigo-600">Contact</a>
+        </nav>
+      </div>
+      <div class="mt-6 text-xs text-slate-500 dark:text-slate-400">© <span id="year"></span> Mamma and Cooperation. All rights reserved.</div>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+</body>
+</html>
